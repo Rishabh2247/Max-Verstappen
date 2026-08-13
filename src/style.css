@@ -295,6 +295,12 @@ html.lenis, html.lenis body {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease !important;
+}
+
+.top-nav.nav-hidden {
+  transform: translateY(-130%) !important;
+  opacity: 0 !important;
 }
 
 .logo-container {
@@ -349,18 +355,26 @@ html.lenis, html.lenis body {
   right: 1.5rem !important;
   width: 56px !important;
   height: 56px !important;
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
   border-radius: 50% !important;
+  border: none !important;
+  background: transparent !important;
   cursor: pointer !important;
-  z-index: 99999 !important;
-  pointer-events: auto !important;
-  box-shadow: none !important;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 130 !important;
+  padding: 0 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease !important;
+}
+
+.menu-btn.pure-tyre-btn.nav-hidden {
+  transform: translateY(-130%) scale(0.8) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.menu-btn.pure-tyre-btn {
   user-select: none;
   -webkit-user-select: none;
 }

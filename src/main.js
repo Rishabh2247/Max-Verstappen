@@ -53,6 +53,56 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       requestAnimationFrame(raf);
     }
+
+    // Hide Navigation on Scroll Down & Reveal on Scroll Up
+    let lastScrollY = window.scrollY || 0;
+    const topNav = document.querySelector('.top-nav');
+    const menuBtn = document.getElementById('menu-toggle-btn');
+    const fsOverlay = document.getElementById('fullscreen-menu-overlay');
+
+    const handleNavScroll = (currentScrollY) => {
+      if (fsOverlay && fsOverlay.classList.contains('active')) {
+        if (topNav) topNav.classList.remove('nav-hidden');
+        if (menuBtn) menuBtn.classList.remove('nav-hidden');
+        return;
+      }
+
+      if (currentScrollY > lastScrollY && currentScrollY > 75) {
+        if (topNav) topNav.classList.add('nav-hidden');
+        if (menuBtn) menuBtn.classList.add('nav-hidden');
+      } else if (currentScrollY < lastScrollY || currentScrollY <= 25) {
+        if (topNav) topNav.classList.remove('nav-hidden');
+        if (menuBtn) menuBtn.classList.remove('nav-hidden');
+      }
+      lastScrollY = Math.max(0, currentScrollY);
+    };
+
+    lenis.on('scroll', (e) => {
+      handleNavScroll(e.scroll);
+    });
+  } else {
+    let lastScrollY = window.scrollY || 0;
+    const topNav = document.querySelector('.top-nav');
+    const menuBtn = document.getElementById('menu-toggle-btn');
+    const fsOverlay = document.getElementById('fullscreen-menu-overlay');
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      if (fsOverlay && fsOverlay.classList.contains('active')) {
+        if (topNav) topNav.classList.remove('nav-hidden');
+        if (menuBtn) menuBtn.classList.remove('nav-hidden');
+        return;
+      }
+
+      if (currentScrollY > lastScrollY && currentScrollY > 75) {
+        if (topNav) topNav.classList.add('nav-hidden');
+        if (menuBtn) menuBtn.classList.add('nav-hidden');
+      } else if (currentScrollY < lastScrollY || currentScrollY <= 25) {
+        if (topNav) topNav.classList.remove('nav-hidden');
+        if (menuBtn) menuBtn.classList.remove('nav-hidden');
+      }
+      lastScrollY = Math.max(0, currentScrollY);
+    }, { passive: true });
   }
 
   // Handle Hash Scroll when returning from Article Page (e.g. #page-5-section)
