@@ -61,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const fsOverlay = document.getElementById('fullscreen-menu-overlay');
 
     const handleNavScroll = (currentScrollY) => {
+      // Save current scroll position to sessionStorage for reload restoration
+      sessionStorage.setItem('mv_last_scroll_pos', String(currentScrollY));
+
       if (fsOverlay && fsOverlay.classList.contains('active')) {
         if (topNav) topNav.classList.remove('nav-hidden');
         if (menuBtn) menuBtn.classList.remove('nav-hidden');
@@ -88,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
+      sessionStorage.setItem('mv_last_scroll_pos', String(currentScrollY));
+
       if (fsOverlay && fsOverlay.classList.contains('active')) {
         if (topNav) topNav.classList.remove('nav-hidden');
         if (menuBtn) menuBtn.classList.remove('nav-hidden');
@@ -103,6 +108,26 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       lastScrollY = Math.max(0, currentScrollY);
     }, { passive: true });
+  }
+
+  // Disable automatic browser scroll resetting on reload
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // Restore User's Exact Scroll Position on Reload/Refresh
+  const savedScrollPos = sessionStorage.getItem('mv_last_scroll_pos');
+  if (!window.location.hash && savedScrollPos !== null) {
+    const targetY = parseFloat(savedScrollPos);
+    if (!isNaN(targetY) && targetY > 10) {
+      setTimeout(() => {
+        if (lenis) {
+          lenis.scrollTo(targetY, { duration: 0.6, immediate: true });
+        } else {
+          window.scrollTo(0, targetY);
+        }
+      }, 150);
+    }
   }
 
   // Handle Hash Scroll when returning from Article Page (e.g. #page-5-section)
