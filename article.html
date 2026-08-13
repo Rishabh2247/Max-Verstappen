@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Max Verstappen — Championship Editorial</title>
+  <link rel="icon" type="image/png" href="./Max Pictures/Max Logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/articleMinimal.css" />
+</head>
+<body class="am-body">
+
+  <!-- Scroll Progress Indicator Bar -->
+  <div class="am-progress-track">
+    <div id="am-progress-bar" class="am-progress-bar"></div>
+  </div>
+
+  <!-- Minimal White Sticky Header -->
+  <header class="am-header">
+    <div class="am-header-container">
+      <!-- Left: Return to Main Site -->
+      <a href="./index.html#page-5-section" class="am-back-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        <span>BACK TO HOMEPAGE</span>
+      </a>
+
+      <!-- Center: Year Selector Tabs -->
+      <nav class="am-year-tabs" id="am-year-tabs">
+        <button class="am-tab-btn" data-year="2021">2021</button>
+        <button class="am-tab-btn" data-year="2022">2022</button>
+        <button class="am-tab-btn" data-year="2023">2023</button>
+        <button class="am-tab-btn" data-year="2024">2024</button>
+      </nav>
+
+      <!-- Right: Editorial Tag -->
+      <div class="am-header-tag">
+        <span class="am-tag-dot">●</span>
+        <span>WDC EDITORIAL</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Article Layout Stream -->
+  <div class="am-wrapper">
+    <article class="am-container">
+      
+      <!-- Hero Header Section -->
+      <header class="am-hero">
+        <div class="am-hero-watermark" id="am-watermark-year">2021</div>
+        
+        <div class="am-hero-badge-row">
+          <span class="am-category-badge">FORMULA 1 • FIA WORLD CHAMPIONSHIP</span>
+          <span class="am-year-pill" id="am-season-pill">2021 SEASON</span>
+        </div>
+
+        <h1 class="am-title" id="am-article-title">MAX VERSTAPPEN: THE 2021 WORLD CHAMPION SEASON</h1>
+        <p class="am-subtitle" id="am-article-subtitle">The season that changed Formula 1 forever</p>
+
+        <!-- Key Telemetry Pills Row -->
+        <div class="am-telemetry-row" id="am-hero-stats"></div>
+      </header>
+
+      <!-- Photo Gallery Grid Section -->
+      <section class="am-gallery-section" id="am-photo-gallery"></section>
+
+      <!-- Main Content Layout (Left Article Body | Right Telemetry Sidebar) -->
+      <div class="am-content-grid">
+        
+        <!-- Left: Editorial Article Body -->
+        <main class="am-article-body" id="am-sections-container"></main>
+
+        <!-- Right: Telemetry & Sources Sidebar -->
+        <aside class="am-sidebar">
+          
+          <!-- Season Telemetry Grid Card -->
+          <div class="am-sidebar-card">
+            <div class="am-sidebar-card-header">
+              <span class="am-card-icon">📊</span>
+              <h3 class="am-card-title">SEASON TELEMETRY</h3>
+            </div>
+            <div class="am-stats-list" id="am-sidebar-stats"></div>
+          </div>
+
+          <!-- Official Sources List Card -->
+          <div class="am-sidebar-card">
+            <div class="am-sidebar-card-header">
+              <span class="am-card-icon">📑</span>
+              <h3 class="am-card-title">OFFICIAL SOURCES</h3>
+            </div>
+            <ul class="am-sources-list" id="am-sidebar-sources"></ul>
+          </div>
+
+        </aside>
+      </div>
+
+      <!-- Bottom Season Navigation Bar -->
+      <footer class="am-footer-nav">
+        <button id="am-prev-season-btn" class="am-nav-season-btn">
+          <span class="am-nav-dir">‹ PREVIOUS CHAMPIONSHIP</span>
+          <span class="am-nav-year" id="am-prev-year-lbl">2024 SEASON</span>
+        </button>
+
+        <a href="./index.html#page-5-section" class="am-home-btn">
+          <span>RETURN TO MAX VERSTAPPEN PORTAL</span>
+        </a>
+
+        <button id="am-next-season-btn" class="am-nav-season-btn">
+          <span class="am-nav-dir">NEXT CHAMPIONSHIP ›</span>
+          <span class="am-nav-year" id="am-next-year-lbl">2022 SEASON</span>
+        </button>
+      </footer>
+
+    </article>
+  </div>
+
+  <!-- Page Logic Script -->
+  <script type="module" src="./src/articlePage.js"></script>
+</body>
+</html>

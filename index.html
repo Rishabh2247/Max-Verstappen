@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Max Verstappen</title>
+  <link rel="icon" type="image/png" href="./Max Pictures/Max Logo.png" />
+  <link rel="apple-touch-icon" href="./Max Pictures/Max Logo.png" />
+  <link rel="stylesheet" href="./src/style.css?v=3" />
+  <!-- GSAP, ScrollTrigger & Lenis Fast Smooth Scroll Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+</head>
+<body>
+  <!-- Single Fixed Background Layer Attached to Viewport -->
+  <div id="global-bg-container" class="global-bg-container" aria-hidden="true">
+    <!-- Marching Squares Red Isolines Canvas over Red Bull Blue BG -->
+    <canvas id="global-contour-canvas" class="global-contour-canvas"></canvas>
+  </div>
+
+  <!-- Top-Level Fixed Pure Red Bull F1 Tyre Menu Button -->
+  <button id="menu-toggle-btn" class="menu-btn pure-tyre-btn" aria-label="Toggle Red Bull F1 Menu" onclick="window.toggleMenuApp && window.toggleMenuApp(event)">
+    <div class="tyre-wrapper">
+      <img src="./Max Pictures/Redbull tyre.webp" alt="Red Bull F1 Tyre" class="tyre-img" />
+    </div>
+  </button>
+
+  <!-- Top-Level Fixed Upper Navigation Header -->
+  <header class="top-nav">
+    <!-- Upper Left Name Logo -->
+    <div class="logo-container">
+      <img src="./Max Pictures/Name Logo.png" alt="Max Verstappen Logo" class="brand-logo" />
+    </div>
+
+    <!-- Middle Upper Max MV Logo -->
+    <div class="center-logo-container">
+      <img src="./Max Pictures/Max Logo.png" alt="Max MV Logo" class="center-logo" />
+    </div>
+  </header>
+
+  <!-- Staggered Staircase Block Navigation Menu Overlay -->
+  <div id="fullscreen-menu-overlay" class="fullscreen-menu">
+    <!-- 5 Vertical Staircase Columns for Staggered Block Reveal -->
+    <div class="staircase-wrapper">
+      <div class="staircase-block block-1"></div>
+      <div class="staircase-block block-2"></div>
+      <div class="staircase-block block-3"></div>
+      <div class="staircase-block block-4"></div>
+      <div class="staircase-block block-5"></div>
+    </div>
+
+    <!-- Navigation Content Overlay -->
+    <div class="fs-menu-container">
+      <!-- Red Bull Red Logo Background Accent -->
+      <div class="fs-menu-bg-logo">
+        <img src="./Max Pictures/Redbull Logo Red.png" alt="Red Bull Red Logo Background" class="fs-bg-logo-img" />
+      </div>
+
+      <div class="fs-menu-top">
+        <span class="fs-tag">01 / NAVIGATION MENU</span>
+        <span class="fs-sub">MAX VERSTAPPEN #1</span>
+      </div>
+
+      <!-- Main Split: Left 2x2 Photo Grid, Right Navigation Links -->
+      <div class="fs-menu-split">
+        <!-- Left Side: 2x2 Photo Box -->
+        <div class="fs-photo-grid">
+          <div class="fs-photo-card" data-key="home">
+            <img src="./Max Pictures/Home.jpeg" alt="Home" class="fs-photo-img" />
+            <div class="fs-photo-overlay">
+              <span class="fs-photo-tag">01</span>
+              <span class="fs-photo-name">HOME</span>
+            </div>
+          </div>
+          <div class="fs-photo-card" data-key="career">
+            <img src="./Max Pictures/Career.jpeg" alt="Career" class="fs-photo-img" />
+            <div class="fs-photo-overlay">
+              <span class="fs-photo-tag">02</span>
+              <span class="fs-photo-name">CAREER</span>
+            </div>
+          </div>
+          <div class="fs-photo-card" data-key="races">
+            <img src="./Max Pictures/Races.jpeg" alt="Races" class="fs-photo-img" />
+            <div class="fs-photo-overlay">
+              <span class="fs-photo-tag">03</span>
+              <span class="fs-photo-name">RACES</span>
+            </div>
+          </div>
+          <div class="fs-photo-card" data-key="offtrack">
+            <img src="./Max Pictures/Offtrack.jpeg" alt="Offtrack" class="fs-photo-img" />
+            <div class="fs-photo-overlay">
+              <span class="fs-photo-tag">04</span>
+              <span class="fs-photo-name">OFFTRACK</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Navigation Links Matching the Photos -->
+        <nav class="fs-main-nav">
+          <a href="javascript:void(0)" class="fs-nav-item" data-target="home" data-key="home">
+            <span class="fs-num">01</span>
+            <span class="fs-title">HOME</span>
+            <span class="fs-arrow">↗</span>
+          </a>
+          <a href="javascript:void(0)" class="fs-nav-item" data-target="career" data-key="career">
+            <span class="fs-num">02</span>
+            <span class="fs-title">CAREER</span>
+            <span class="fs-arrow">↗</span>
+          </a>
+          <a href="javascript:void(0)" class="fs-nav-item" data-target="races" data-key="races">
+            <span class="fs-num">03</span>
+            <span class="fs-title">RACES</span>
+            <span class="fs-arrow">↗</span>
+          </a>
+          <a href="javascript:void(0)" class="fs-nav-item" data-target="offtrack" data-key="offtrack">
+            <span class="fs-num">04</span>
+            <span class="fs-title">OFFTRACK</span>
+            <span class="fs-arrow">↗</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="fs-menu-bottom">
+        <div class="fs-meta-item">
+          <span class="fs-meta-label">TEAM</span>
+          <span class="fs-meta-val">RED BULL RACING</span>
+        </div>
+        <div class="fs-meta-item">
+          <span class="fs-meta-label">HONOURS</span>
+          <span class="fs-meta-val">3X WORLD CHAMPION</span>
+        </div>
+        <div class="fs-meta-item">
+          <span class="fs-meta-label">POWER UNIT</span>
+          <span class="fs-meta-val">HONDA RBPT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Section Modal Drawer -->
+  <div id="section-modal" class="section-modal">
+    <div class="modal-card">
+      <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      <div id="modal-body-content"></div>
+    </div>
+  </div>
+
+  <!-- Hero Pin Section Wrapper -->
+  <div id="hero-pin-section" class="hero-pin-section">
+
+    <!-- Background Dual Marquee Layer (Red & White Dual-Direction Loop) -->
+    <div class="marquee-bg-layer" aria-hidden="true">
+      <!-- Line 1 (Top): Left-to-Right -->
+      <div class="marquee-row">
+        <div class="marquee-track track-left-to-right">
+          <span><span class="text-red">SIMPLY LOVELY</span> &nbsp;•&nbsp; <span class="text-white">DUTCH LION</span> &nbsp;•&nbsp; <span class="text-red">SIMPLY LOVELY</span> &nbsp;•&nbsp; <span class="text-white">DUTCH LION</span> &nbsp;•&nbsp;</span>
+          <span><span class="text-red">SIMPLY LOVELY</span> &nbsp;•&nbsp; <span class="text-white">DUTCH LION</span> &nbsp;•&nbsp; <span class="text-red">SIMPLY LOVELY</span> &nbsp;•&nbsp; <span class="text-white">DUTCH LION</span> &nbsp;•&nbsp;</span>
+        </div>
+      </div>
+
+      <!-- Line 2 (Bottom): Right-to-Left (Opposite Way) -->
+      <div class="marquee-row">
+        <div class="marquee-track track-right-to-left">
+          <span><span class="text-white">MAYBE GOD IS WITH HIM,</span> <span class="text-red">BUT HE IS NOT GOD.</span> &nbsp;•&nbsp; <span class="text-white">MAYBE GOD IS WITH HIM,</span> <span class="text-red">BUT HE IS NOT GOD.</span> &nbsp;•&nbsp;</span>
+          <span><span class="text-white">MAYBE GOD IS WITH HIM,</span> <span class="text-red">BUT HE IS NOT GOD.</span> &nbsp;•&nbsp; <span class="text-white">MAYBE GOD IS WITH HIM,</span> <span class="text-red">BUT HE IS NOT GOD.</span> &nbsp;•&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 1 HERO COMPOSITION WRAPPER -->
+    <div id="hero-composition-wrapper" class="hero-composition">
+
+      <!-- Topography Lines Canvas -->
+      <canvas id="contour-canvas"></canvas>
+
+      <!-- Ambient Moving Blurry Gradient Orbs behind Hero Character (Red & Red Bull Blue) -->
+      <div class="hero-glow-orbs-container" aria-hidden="true">
+        <div class="glow-orb glow-orb-red"></div>
+        <div class="glow-orb glow-orb-blue"></div>
+      </div>
+
+      <!-- Bottom Left Corner Race & Champion Card (Fades out when scrolling down) -->
+      <aside id="f1-card-container" class="f1-card-container">
+        <div class="f1-race-card">
+          <div class="card-notch-tag">NEXT RACE</div>
+          
+          <!-- Zandvoort Track Line Art SVG -->
+          <div class="track-box">
+            <svg viewBox="0 0 120 70" class="track-svg" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 25 55 C 15 55 12 45 15 35 C 18 25 30 18 45 22 C 55 25 60 15 70 12 C 80 9 95 12 100 22 C 105 32 95 45 80 48 C 70 50 60 42 50 42 C 40 42 35 55 25 55 Z" 
+                    fill="none" stroke="#b0b0b0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <div class="card-race-title">ZANDVOORT GP</div>
+          
+          <div class="card-divider"></div>
+
+          <!-- World Champ Emblem Image with background removed -->
+          <div class="champ-emblem-box">
+            <img src="./Max Pictures/World Champ.png" alt="World Champion" class="champ-emblem-img" />
+          </div>
+
+          <div class="card-subtext">
+            RED BULL RACING<br />SINCE 2015
+          </div>
+        </div>
+      </aside>
+
+      <!-- Large Foreground Hero Character Wrapper -->
+      <div id="hero-character-wrapper"></div>
+
+    </div>
+  </div>
+
+  <!-- Page 2 Section (Red Bull Blue Background with Marching Squares Red Isolines & Lando-Inspired Typography Quote) -->
+  <section id="page-2-section" class="page-2-section">
+    <!-- Page 2 Lando Norris-Inspired Editorial Quote Display -->
+    <div class="p2-quote-wrapper">
+      <!-- Signature Graphic Accent above Page 2 paragraph -->
+      <div class="p2-signature-wrapper">
+        <img src="./Max Pictures/max signature.svg" alt="Max Verstappen Signature" class="p2-signature-img" />
+      </div>
+
+      <h2 class="p2-quote-text">
+        <span class="p2-serif-highlight">PUSHING THE LIMITS,</span> CHASING EVERY <span class="p2-serif-highlight">WIN,</span> AND STAYING FOCUSED ON WHAT MATTERS. <span class="p2-serif-highlight">NO SHORTCUTS,</span> NO EXCUSES. JUST <span class="p2-serif-highlight">HARD RACING,</span> CONSTANT IMPROVEMENT, AND BUILDING A <span class="p2-serif-highlight">LEGACY</span> THAT SPEAKS FOR ITSELF — <span class="p2-serif-highlight">ON AND OFF THE TRACK.</span> 🏁
+      </h2>
+    </div>
+  </section>
+
+  <!-- Page 3 Section (Minimalist F1 Race & Season Dashboard) -->
+  <section id="page-3-section" class="page-3-section">
+    <div class="p3-dashboard-container">
+      
+      <!-- Dashboard Header Row -->
+      <div class="p3-dash-header">
+        <div class="p3-dash-tag">
+          <span class="p3-live-indicator">● LIVE TELEMETRY</span>
+          <span class="p3-dash-sub">MAX VERSTAPPEN #1</span>
+        </div>
+        <h2 class="p3-dash-title">RACE & SEASON DASHBOARD</h2>
+      </div>
+
+      <!-- Dashboard Main Grid (3 Cards) -->
+      <div class="p3-dash-grid">
+
+        <!-- Card 1: 12 Upcoming 2026 F1 Races & Live Race Day Telemetry -->
+        <div class="p3-card p3-next-race-card">
+          <div class="p3-card-header">
+            <span class="p3-card-label" id="p3-card-race-mode-label">ROUND 12 • UPCOMING</span>
+            <div class="p3-race-nav">
+              <button id="p3-prev-race-btn" class="p3-race-btn" title="Previous Grand Prix">‹</button>
+              <span id="p3-race-index-badge" class="p3-card-badge p3-badge-red">NEXT RACE (1/12)</span>
+              <button id="p3-next-race-btn" class="p3-race-btn" title="Next Grand Prix">›</button>
+            </div>
+          </div>
+
+          <!-- Status Mode Filter Pills (Upcoming / Live Race Day / Race Result) -->
+          <div class="p3-status-pills">
+            <button class="p3-status-pill active" data-mode="UPCOMING">UPCOMING</button>
+            <button class="p3-status-pill" data-mode="LIVE">🔴 LIVE</button>
+            <button class="p3-status-pill" data-mode="RESULT">🏁 RESULT</button>
+          </div>
+
+          <div class="p3-race-info">
+            <h3 class="p3-race-name" id="p3-display-race-name">DUTCH GP</h3>
+            <p class="p3-circuit-name" id="p3-display-circuit-name">Circuit Zandvoort, Netherlands</p>
+            <div class="p3-date-pill" id="p3-display-date-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span id="p3-display-date">21 – 23 AUG 2026</span>
+            </div>
+          </div>
+
+          <div class="p3-race-stats" id="p3-display-stats">
+            <div class="p3-mini-stat">
+              <span class="p3-mstat-val" id="p3-stat-1-val">72</span>
+              <span class="p3-mstat-lbl" id="p3-stat-1-lbl">TOTAL LAPS</span>
+            </div>
+            <div class="p3-mini-stat">
+              <span class="p3-mstat-val" id="p3-stat-2-val">4.259 KM</span>
+              <span class="p3-mstat-lbl" id="p3-stat-2-lbl">CIRCUIT LENGTH</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: 2026 Season Points & Live Telemetry -->
+        <div class="p3-card p3-points-card">
+          <div class="p3-card-header">
+            <span class="p3-card-label">2026 SEASON STANDINGS</span>
+            <span class="p3-card-badge p3-badge-red">P1 LEAD</span>
+          </div>
+
+          <div class="p3-points-hero">
+            <span class="p3-points-num">429</span>
+            <span class="p3-points-unit">PTS</span>
+          </div>
+
+          <!-- Quick Metrics List -->
+          <div class="p3-metrics-list">
+            <div class="p3-metric-item">
+              <span class="p3-met-label">TOTAL CAREER WINS</span>
+              <span class="p3-met-val">63 WINS</span>
+            </div>
+            <div class="p3-metric-item">
+              <span class="p3-met-label">CHAMPIONSHIP POS.</span>
+              <span class="p3-met-val p3-text-red">1ST PLACE</span>
+            </div>
+            <div class="p3-metric-item">
+              <span class="p3-met-label">CURRENT AVG SPEED</span>
+              <span class="p3-met-val">234.8 KM/H</span>
+            </div>
+            <div class="p3-metric-item">
+              <span class="p3-met-label">LAST VICTORY VENUE</span>
+              <span class="p3-met-val">ZANDVOORT, NL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Past Seasons Victories List -->
+        <div class="p3-card p3-past-seasons-card">
+          <div class="p3-card-header">
+            <span class="p3-card-label">PAST SEASONS VICTORIES</span>
+            <span class="p3-card-badge">HISTORICAL</span>
+          </div>
+
+          <div class="p3-seasons-list">
+            <div class="p3-season-row">
+              <span class="p3-s-year">2024</span>
+              <span class="p3-s-wins">9 WINS</span>
+              <span class="p3-s-title p3-gold-badge">WDC CHAMPION</span>
+            </div>
+            <div class="p3-season-row">
+              <span class="p3-s-year">2023</span>
+              <span class="p3-s-wins">19 WINS</span>
+              <span class="p3-s-title p3-gold-badge">WDC CHAMPION</span>
+            </div>
+            <div class="p3-season-row">
+              <span class="p3-s-year">2022</span>
+              <span class="p3-s-wins">15 WINS</span>
+              <span class="p3-s-title p3-gold-badge">WDC CHAMPION</span>
+            </div>
+            <div class="p3-season-row">
+              <span class="p3-s-year">2021</span>
+              <span class="p3-s-wins">10 WINS</span>
+              <span class="p3-s-title p3-gold-badge">WDC CHAMPION</span>
+            </div>
+            <div class="p3-season-row">
+              <span class="p3-s-year">2020</span>
+              <span class="p3-s-wins">2 WINS</span>
+              <span class="p3-s-title">3RD PLACE</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Landscape Card: 3D Spinning Next Race Track Visualization -->
+      <div class="p3-landscape-track-card">
+        <div class="p3-track-card-header">
+          <div class="p3-track-header-left">
+            <span class="p3-card-badge p3-badge-red" id="p3-3d-badge-status">3D CIRCUIT VIEW</span>
+            <h3 class="p3-track-title" id="p3-3d-track-title">ALBERT PARK CIRCUIT — 3D TELEMETRY</h3>
+            <p class="p3-track-subtitle" id="p3-3d-track-subtitle">MELBOURNE, AUSTRALIA • 5.278 KM • 14 CORNERS • DRS ZONES: 4</p>
+          </div>
+          <div class="p3-track-header-right">
+            <span class="p3-3d-hint">🔄 DRAG TO ROTATE 3D TRACK</span>
+          </div>
+        </div>
+
+        <!-- 3D Canvas Stage -->
+        <div class="p3-track-canvas-container">
+          <canvas id="p3-track-3d-canvas"></canvas>
+
+          <!-- Telemetry Overlay Badges -->
+          <div class="p3-track-telemetry-overlay">
+            <div class="p3-ttel-badge">
+              <span class="p3-ttel-val" id="p3-ttel-speed">340 KM/H</span>
+              <span class="p3-ttel-lbl">TOP SPEED (DRS 1)</span>
+            </div>
+            <div class="p3-ttel-badge">
+              <span class="p3-ttel-val" id="p3-ttel-record">1:16.732</span>
+              <span class="p3-ttel-lbl">LAP RECORD</span>
+            </div>
+            <div class="p3-ttel-badge">
+              <span class="p3-ttel-val" id="p3-ttel-corners">14 CORNERS</span>
+              <span class="p3-ttel-lbl">SECTOR CONFIGURATION</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Page 4 Section (Full-Bleed Looping Video Only) -->
+  <section id="page-4-section" class="page-4-section">
+    <video id="page4-video" class="page4-video" autoplay loop muted playsinline preload="auto">
+      <source src="./Max Pictures/BLACK OUT - MAX VERSTAPPEN EDIT_1440p60.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Glassmorphism Volume Toggle Button -->
+    <button id="video-volume-btn" class="video-volume-btn" aria-label="Toggle Video Sound">
+      <span id="volume-icon" class="volume-icon">🔇</span>
+      <span id="volume-text" class="volume-text">SOUND OFF</span>
+    </button>
+  </section>
+
+  <!-- Page 5 Section (6-Block Asymmetrical Masonry Grid Layout) -->
+  <section id="page-5-section" class="page-5-section">
+    <div class="p5-content-wrapper">
+      <!-- Header Row matching reference image typography -->
+      <div class="page5-header-row">
+        <div class="p5-title-group">
+          <h2 class="p5-main-title">WINS</h2>
+          <span class="p5-sub-title">HALL OF FAME</span>
+        </div>
+        <div class="p5-desc-group">
+          <p>From historic Grand Prix victories to World Drivers' Championships, Max Verstappen's relentless pursuit of perfection defines an era of Formula 1 dominance.</p>
+        </div>
+      </div>
+
+      <!-- 6-Block Masonry Grid -->
+      <div class="p5-masonry-container">
+        <!-- Column 1 (2 Blocks) -->
+        <div class="p5-column p5-col-1">
+        <a href="./article.html?year=2021" class="p5-card-link">
+          <div class="p5-card p5-card-h-short" data-article-year="2021">
+            <img src="./Max Pictures/Wins and Trophies/Max WDC 2021.jpeg" alt="Max WDC 2021" class="p5-card-img" />
+            <div class="p5-card-meta">
+              <span class="p5-meta-title">WDC Champion</span>
+              <span class="p5-meta-year">2021</span>
+              <span class="p5-read-badge">READ STORY ↗</span>
+            </div>
+          </div>
+        </a>
+        <a href="./article.html?year=2021&highlight=Monaco" class="p5-card-link">
+          <div class="p5-card p5-card-h-tall" data-article-year="2021" data-highlight="Monaco">
+            <img src="./Max Pictures/Wins and Trophies/Max Imola GP 2021.jpeg" alt="Max Imola GP 2021" class="p5-card-img" />
+            <div class="p5-card-meta">
+              <span class="p5-meta-title">Imola GP</span>
+              <span class="p5-meta-year">2021</span>
+              <span class="p5-read-badge">READ STORY ↗</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Column 2 (2 Blocks - Staggered Offset) -->
+      <div class="p5-column p5-col-2">
+        <a href="./article.html?year=2022" class="p5-card-link">
+          <div class="p5-card p5-card-h-tall" data-article-year="2022">
+            <img src="./Max Pictures/Wins and Trophies/Max WDC 2022.jpeg" alt="Max WDC 2022" class="p5-card-img" />
+            <div class="p5-card-meta">
+              <span class="p5-meta-title">WDC Champion</span>
+              <span class="p5-meta-year">2022</span>
+              <span class="p5-read-badge">READ STORY ↗</span>
+            </div>
+          </div>
+        </a>
+        <a href="./article.html?year=2023&highlight=Qatar" class="p5-card-link">
+          <div class="p5-card p5-card-h-medium" data-article-year="2023" data-highlight="Qatar">
+            <img src="./Max Pictures/Wins and Trophies/Max Qatar GP 2023.jpeg" alt="Max Qatar GP 2023" class="p5-card-img" />
+            <div class="p5-card-meta">
+              <span class="p5-meta-title">Qatar GP</span>
+              <span class="p5-meta-year">2023</span>
+              <span class="p5-read-badge">READ STORY ↗</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Column 3 (2 Blocks) -->
+      <div class="p5-column p5-col-3">
+        <a href="./article.html?year=2023" class="p5-card-link">
+          <div class="p5-card p5-card-h-short" data-article-year="2023">
+            <img src="./Max Pictures/Wins and Trophies/Max WDC 2023.jpeg" alt="Max WDC 2023" class="p5-card-img" />
+            <div class="p5-card-meta">
+              <span class="p5-meta-title">WDC Champion</span>
+              <span class="p5-meta-year">2023</span>
+              <span class="p5-read-badge">READ STORY ↗</span>
+            </div>
+          </div>
+        </a>
+        <a href="./article.html?year=2024" class="p5-card-link">
+          <div class="p5-card p5-card-h-tall" data-article-year="2024">
+            <img src="./Max Pictures/Wins and Trophies/Max WDC 2024.jpeg" alt="Max WDC 2024" class="p5-card-img" />
+            <div class="p5-card-meta">
+              <span class="p5-meta-title">WDC Champion</span>
+              <span class="p5-meta-year">2024</span>
+              <span class="p5-read-badge">READ STORY ↗</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- Page 6 Section (RB19 Full-Bleed 4K 300-Frame Canvas Scroll Animation) -->
+  <section id="rb19-scroll-section" class="rb19-scroll-section">
+    <div class="rb19-canvas-container">
+      <canvas id="rb19-canvas"></canvas>
+    </div>
+
+    <!-- Audio Element for RB Engine Sound -->
+    <audio id="rb19-engine-audio" src="./Max Pictures/RB Engine sound.mp3" preload="auto" loop></audio>
+
+    <!-- Glassmorphism Engine Sound Button in Bottom-Right Corner -->
+    <button id="engine-sound-btn" class="engine-sound-btn" aria-label="Play Engine Sound">
+      <span id="engine-sound-icon" class="engine-sound-icon">🔊</span>
+      <span id="engine-sound-text" class="engine-sound-text">ENGINE SOUND</span>
+    </button>
+  </section>
+
+  <!-- Page 7 Section (Max Verstappen Store & Champion Collection) -->
+  <section id="page-7-section" class="page-7-section">
+    <div class="p7-container">
+
+      <!-- Left Column: Typography & Call To Action -->
+      <div class="p7-left-col">
+        <div class="p7-category-tag">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span>VERSTAPPEN STORE</span>
+        </div>
+
+        <h2 class="p7-hero-title">
+          <span class="p7-title-line1">WORLD</span>
+          <span class="p7-title-line2">DRIVERS'</span>
+          <span class="p7-title-line3">CHAMPION</span>
+        </h2>
+
+        <p class="p7-description">
+          Celebrate this incredible moment with an exclusive collection designed for the fans who never stopped believing. Wear it, frame it, treasure it forever.
+        </p>
+
+        <a href="https://store.verstappen.com/en/" target="_blank" rel="noopener noreferrer" class="p7-store-btn">
+          <span>VISIT THE STORE</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      </div>
+
+      <!-- Right Column: Hero Apparel Composition -->
+      <div class="p7-right-col">
+        <!-- Main Large Portrait Card -->
+        <div class="p7-main-image-card">
+          <img src="./Max Pictures/Max Shop.avif" alt="Max Verstappen Shop" class="p7-main-img" />
+        </div>
+
+        <!-- Overlapping Top-Right Secondary Card -->
+        <div class="p7-float-card-right">
+          <img src="./Max Pictures/Max shop 2.avif" alt="Verstappen Champion Collection" class="p7-secondary-img" />
+        </div>
+
+        <!-- Overlapping Bottom Accent Photo Card (Max shop 3) -->
+        <div class="p7-mv1-badge">
+          <img src="./Max Pictures/Max shop 3.webp" alt="Verstappen Shop 3" class="p7-badge-img" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Page 8 Section (What's Up On Socials - Interactive Fan Cards Layout) -->
+  <section id="page-8-section" class="page-8-section">
+    <div class="p8-container">
+      <!-- Title Group matching reference -->
+      <div class="p8-title-group">
+        <h2 class="p8-main-title">WHAT'S UP</h2>
+        <span class="p8-sub-title">ON SOCIALS</span>
+      </div>
+
+      <!-- Interactive Fan Cards Layout -->
+      <div class="p8-fan-wrapper" id="p8-fan-wrapper">
+        <div class="p8-fan-card" data-index="0">
+          <img src="./Max Pictures/Carosal/1.jpeg" alt="Max Verstappen Social 1" class="p8-card-img" />
+        </div>
+        <div class="p8-fan-card" data-index="1">
+          <img src="./Max Pictures/Carosal/2.jpeg" alt="Max Verstappen Social 2" class="p8-card-img" />
+        </div>
+        <div class="p8-fan-card" data-index="2">
+          <img src="./Max Pictures/Carosal/3.jpeg" alt="Max Verstappen Social 3" class="p8-card-img" />
+        </div>
+        <div class="p8-fan-card" data-index="3">
+          <img src="./Max Pictures/Carosal/4.jpeg" alt="Max Verstappen Social 4" class="p8-card-img" />
+        </div>
+        <div class="p8-fan-card" data-index="4">
+          <img src="./Max Pictures/Carosal/5.jpeg" alt="Max Verstappen Social 5" class="p8-card-img" />
+        </div>
+        <div class="p8-fan-card" data-index="5">
+          <img src="./Max Pictures/Carosal/6.jpeg" alt="Max Verstappen Social 6" class="p8-card-img" />
+        </div>
+        <div class="p8-fan-card" data-index="6">
+          <img src="./Max Pictures/Carosal/7.jpeg" alt="Max Verstappen Social 7" class="p8-card-img" />
+        </div>
+      </div>
+
+      <!-- Follow Tagline & Social Links -->
+      <div class="p8-footer-group">
+        <span class="p8-footer-tagline">Follow Max on social media</span>
+        <div class="p8-social-links">
+          <a href="https://x.com/Max33Verstappen" target="_blank" rel="noopener noreferrer" class="p8-social-link">X</a>
+          <a href="https://www.instagram.com/maxverstappen1/?hl=en" target="_blank" rel="noopener noreferrer" class="p8-social-link">INSTAGRAM</a>
+          <a href="https://www.youtube.com/@MaxVerstappen1" target="_blank" rel="noopener noreferrer" class="p8-social-link">YOUTUBE</a>
+          <a href="https://www.twitch.tv/verstappensimracing" target="_blank" rel="noopener noreferrer" class="p8-social-link">TWITCH</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hidden SVG Clip-Path Definition for Responsive Concave Curved Notch Footer Top Edge -->
+  <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
+    <defs>
+      <clipPath id="footer-curved-clip" clipPathUnits="objectBoundingBox">
+        <path d="M 0,0.06 Q 0,0.035 0.025,0.035 L 0.33,0.035 C 0.40,0.035 0.425,0.11 0.50,0.11 C 0.575,0.11 0.60,0.035 0.67,0.035 L 0.975,0.035 Q 1,0.035 1,0.06 L 1,0.96 Q 1,0.985 0.975,0.985 L 0.025,0.985 Q 0,0.985 0,0.96 Z" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- Site Footer (Matching Reference Design) -->
+  <footer id="site-footer" class="site-footer">
+    <!-- Signature Graphic Accent -->
+    <div class="footer-signature-wrapper">
+      <img src="./Max Pictures/max signature.svg" alt="Max Verstappen Signature" class="footer-signature-img" />
+    </div>
+
+    <!-- Hero Footer Title -->
+    <h2 class="footer-hero-title">
+      <span class="f-title-white">ALWAYS</span> <span class="f-title-accent">BRINGING</span><br />
+      <span class="f-title-white">THE</span> <span class="f-title-accent">FIGHT.</span>
+    </h2>
+
+    <!-- Main Footer Grid (3 Columns: Left Links | Center Portrait | Right Links) -->
+    <div class="footer-content-grid">
+      <!-- Left Column: Pages -->
+      <div class="footer-col footer-col-left">
+        <span class="footer-col-label">PAGES</span>
+        <ul class="footer-links-list">
+          <li><a href="#hero-pin-section" data-key="home" class="footer-nav-link">HOME</a></li>
+          <li><a href="#page-5-section" data-key="career" class="footer-nav-link">CAREER</a></li>
+          <li><a href="#page-3-section" data-key="races" class="footer-nav-link">RACES</a></li>
+          <li><a href="https://store.verstappen.com/en/" target="_blank" rel="noopener noreferrer" class="footer-highlight-link">SHOP</a></li>
+        </ul>
+      </div>
+
+      <!-- Center Column: Max 2.png Portrait cutout -->
+      <div class="footer-col-center">
+        <img src="./Max Pictures/Max 2.png" alt="Max Verstappen" class="footer-max-portrait" />
+      </div>
+
+      <!-- Right Column: Follow On -->
+      <div class="footer-col footer-col-right">
+        <span class="footer-col-label">FOLLOW ON</span>
+        <ul class="footer-links-list">
+          <li><a href="https://x.com/Max33Verstappen" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li><a href="https://www.instagram.com/maxverstappen1/?hl=en" target="_blank" rel="noopener noreferrer">INSTAGRAM</a></li>
+          <li><a href="https://www.youtube.com/@MaxVerstappen1" target="_blank" rel="noopener noreferrer">YOUTUBE</a></li>
+          <li><a href="https://www.twitch.tv/verstappensimracing" target="_blank" rel="noopener noreferrer">TWITCH</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Action & Enquiries Bar -->
+    <div class="footer-bottom-bar">
+      <a href="mailto:info@verstappen.com" class="footer-enquiry-btn">
+        <span>BUSINESS ENQUIRIES</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      </a>
+    </div>
+
+    <!-- Sponsor / Partner Logos Marquee -->
+    <div class="footer-partners-bar">
+      <div class="partners-track">
+        <span>RED BULL RACING</span>
+        <span>•</span>
+        <span>TAG HEUER</span>
+        <span>•</span>
+        <span>EA SPORTS</span>
+        <span>•</span>
+        <span>HEINEKEN 0.0</span>
+        <span>•</span>
+        <span>VIAPLAY</span>
+        <span>•</span>
+        <span>MOBIL 1</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive WDC Article Reader Modal Window -->
+  <div id="wdc-article-modal" class="wdc-modal">
+    <div class="wdc-modal-backdrop"></div>
+    <div class="wdc-modal-window">
+      <!-- Progress Bar -->
+      <div class="wdc-progress-track">
+        <div id="wdc-modal-progress-bar" class="wdc-progress-bar"></div>
+      </div>
+
+      <!-- Header Navigation Bar -->
+      <header class="wdc-modal-header">
+        <div class="wdc-modal-brand">
+          <span class="wdc-f1-tag">FORMULA 1 • WORLD DRIVERS' CHAMPIONSHIP</span>
+          <span id="wdc-year-nav-pill" class="wdc-year-pill">2021 SEASON</span>
+        </div>
+
+        <div class="wdc-modal-nav-controls">
+          <button id="wdc-prev-year-btn" class="wdc-nav-year-btn" title="Previous Season Article">
+            <span id="wdc-prev-label">‹ 2024</span>
+          </button>
+          <button id="wdc-next-year-btn" class="wdc-nav-year-btn" title="Next Season Article">
+            <span id="wdc-next-label">2022 ›</span>
+          </button>
+          <button id="wdc-modal-close-btn" class="wdc-close-btn" aria-label="Close Article Window">&times;</button>
+        </div>
+      </header>
+
+      <!-- Scrollable Article Content Container -->
+      <div id="wdc-modal-body-scroll" class="wdc-modal-scroll-area">
+        <div class="wdc-article-hero">
+          <div class="wdc-hero-text">
+            <span id="wdc-modal-year-badge" class="wdc-year-watermark">2021</span>
+            <h1 id="wdc-modal-title" class="wdc-title">MAX VERSTAPPEN: THE 2021 WORLD CHAMPION SEASON</h1>
+            <p id="wdc-modal-subtitle" class="wdc-subtitle">The season that changed Formula 1 forever</p>
+          </div>
+
+          <!-- Stat Summary Pills in Header -->
+          <div id="wdc-modal-header-stats" class="wdc-header-stats-row"></div>
+        </div>
+
+        <!-- Image Gallery Carousel / Grid -->
+        <div id="wdc-modal-gallery" class="wdc-gallery-row"></div>
+
+        <!-- Two Column Main Layout: Left Article Body | Right Statistics & Sources -->
+        <div class="wdc-article-layout">
+          <main class="wdc-article-main">
+            <div id="wdc-modal-article-sections" class="wdc-sections-wrapper"></div>
+          </main>
+
+          <aside class="wdc-article-sidebar">
+            <div class="wdc-sidebar-block">
+              <h4 class="wdc-sidebar-heading">SEASON TELEMETRY</h4>
+              <div id="wdc-modal-stats-grid" class="wdc-stats-grid"></div>
+            </div>
+
+            <div class="wdc-sidebar-block">
+              <h4 class="wdc-sidebar-heading">OFFICIAL SOURCES</h4>
+              <ul id="wdc-modal-sources-list" class="wdc-sources-list"></ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js?v=18"></script>
+</body>
+</html>
