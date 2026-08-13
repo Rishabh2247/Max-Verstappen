@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Transparent Foreground Hero Character WebGL Liquid Engine
   const heroWrapper = document.getElementById('hero-character-wrapper');
   if (heroWrapper) {
-    const img1 = './Max Pictures/Max 1.png';
-    const img2 = './Max Pictures/Max 2.png';
+    const img1 = encodeURI('./Max Pictures/Max 1.png');
+    const img2 = encodeURI('./Max Pictures/Max 2.png');
 
     const heroEngine = new LiquidRevealEngine(heroWrapper, img1, img2);
     heroEngine.start();
@@ -480,19 +480,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ultra-High 4K Pixel Density Ratio (3x buffer density)
     const dpr = Math.max(window.devicePixelRatio || 1, 3);
 
-    // Format frame filename e.g. 0 -> "ezgif-frame-001.jpg"
+    // Format frame filename with encodeURI for Vercel / Linux path safety e.g. 0 -> "ezgif-frame-001.jpg"
     const currentFrame = (index) => {
       const paddedIndex = String(index + 1).padStart(3, '0');
-      return `./Max Pictures/RB19/ezgif-1b4819bf5308af8e-jpg/ezgif-frame-${paddedIndex}.jpg`;
+      return encodeURI(`./Max Pictures/RB19/ezgif-1b4819bf5308af8e-jpg/ezgif-frame-${paddedIndex}.jpg`);
     };
 
-    // Preload all 300 frames in memory
+    // Preload 300 frames in memory with immediate render on first loaded frame
     for (let i = 0; i < frameCount; i++) {
       const img = new Image();
-      img.src = currentFrame(i);
       img.onload = () => {
-        if (i === 0) render();
+        if (i === 0 || Math.round(sequence.frame) === i) {
+          render();
+        }
       };
+      img.src = currentFrame(i);
       images.push(img);
     }
 
@@ -501,9 +503,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
 
-      // Scale internal canvas resolution buffer to HiDPI 4K
-      rb19Canvas.width = Math.round(w * dpr);
-      rb19Canvas.height = Math.round(h * dpr);
+      // Safe DPR ratio for canvas buffer stability across all viewports
+      const safeDpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      rb19Canvas.width = Math.round(w * safeDpr);
+      rb19Canvas.height = Math.round(h * safeDpr);
       rb19Canvas.style.width = w + 'px';
       rb19Canvas.style.height = h + 'px';
 
@@ -512,13 +516,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
       if (!ctx || !rb19Canvas) return;
-      const img = images[sequence.frame];
-      if (!img || !img.complete) return;
+      let frameIndex = Math.min(Math.max(0, Math.round(sequence.frame)), frameCount - 1);
+      let img = images[frameIndex];
+
+      // Fallback: If target frame is still downloading over network, render nearest loaded frame!
+      if (!img || !img.complete || img.naturalWidth === 0) {
+        for (let offset = 1; offset < 40; offset++) {
+          const prevIdx = Math.max(0, frameIndex - offset);
+          const nextIdx = Math.min(frameCount - 1, frameIndex + offset);
+          if (images[prevIdx] && images[prevIdx].complete && images[prevIdx].naturalWidth > 0) {
+            img = images[prevIdx];
+            break;
+          }
+          if (images[nextIdx] && images[nextIdx].complete && images[nextIdx].naturalWidth > 0) {
+            img = images[nextIdx];
+            break;
+          }
+        }
+      }
+
+      if (!img || !img.complete || img.naturalWidth === 0) return;
 
       const cw = rb19Canvas.width;
       const ch = rb19Canvas.height;
 
-      // Enable 4K high quality image smoothing & contrast enhancement filter
+      // Enable high quality image smoothing & contrast enhancement filter
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = 'high';
       ctx.filter = 'contrast(1.12) saturate(1.10) brightness(1.03)';
@@ -527,15 +549,13 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.fillRect(0, 0, cw, ch);
 
       // Scale image width to fit 100% of the page width
-      const ratio = cw / img.width;
-
-      const centerShiftX = 0;
-      const centerShiftY = (ch - img.height * ratio) / 2;
+      const ratio = cw / img.naturalWidth;
+      const centerShiftY = (ch - img.naturalHeight * ratio) / 2;
 
       ctx.drawImage(
         img,
-        0, 0, img.width, img.height,
-        centerShiftX, centerShiftY, cw, img.height * ratio
+        0, 0, img.naturalWidth, img.naturalHeight,
+        0, centerShiftY, cw, img.naturalHeight * ratio
       );
     }
 
