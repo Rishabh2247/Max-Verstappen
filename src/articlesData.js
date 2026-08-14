@@ -4,9 +4,9 @@ export const ARTICLES_DATA = {
     "title": "MAX VERSTAPPEN: THE 2021 WORLD CHAMPION SEASON",
     "subtitle": "The season that changed Formula 1 forever",
     "images": [
-      "./Max Pictures/Wins and Trophies/Max WDC 2021.jpeg",
-      "./Max Pictures/Wins and Trophies/Max Imola GP 2021.jpeg",
-      "./Max Pictures/Carosal/1.jpeg"
+      "./Max Pictures/Wins and Trophies/Max WDC 2021.webp",
+      "./Max Pictures/Wins and Trophies/Max Imola GP 2021.webp",
+      "./Max Pictures/Carosal/1.webp"
     ],
     "sections": [
       {
@@ -119,9 +119,9 @@ export const ARTICLES_DATA = {
     "title": "MAX VERSTAPPEN: THE 2022 WORLD CHAMPION SEASON",
     "subtitle": "From defending a title to dominating a new era",
     "images": [
-      "./Max Pictures/Wins and Trophies/Max WDC 2022.jpeg",
-      "./Max Pictures/Carosal/2.jpeg",
-      "./Max Pictures/Carosal/3.jpeg"
+      "./Max Pictures/Wins and Trophies/Max WDC 2022.webp",
+      "./Max Pictures/Carosal/2.webp",
+      "./Max Pictures/Carosal/3.webp"
     ],
     "sections": [
       {
@@ -260,9 +260,9 @@ export const ARTICLES_DATA = {
     "title": "MAX VERSTAPPEN: THE 2023 WORLD CHAMPION SEASON",
     "subtitle": "The season that turned dominance into history",
     "images": [
-      "./Max Pictures/Wins and Trophies/Max WDC 2023.jpeg",
-      "./Max Pictures/Wins and Trophies/Max Qatar GP 2023.jpeg",
-      "./Max Pictures/Carosal/4.jpeg"
+      "./Max Pictures/Wins and Trophies/Max WDC 2023.webp",
+      "./Max Pictures/Wins and Trophies/Max Qatar GP 2023.webp",
+      "./Max Pictures/Carosal/4.webp"
     ],
     "sections": [
       {
@@ -442,9 +442,9 @@ export const ARTICLES_DATA = {
     "title": "MAX VERSTAPPEN: THE 2024 WORLD CHAMPION SEASON",
     "subtitle": "The season that proved a champion can win without the fastest car",
     "images": [
-      "./Max Pictures/Wins and Trophies/Max WDC 2024.jpeg",
-      "./Max Pictures/Carosal/5.jpeg",
-      "./Max Pictures/Carosal/6.jpeg"
+      "./Max Pictures/Wins and Trophies/Max WDC 2024.webp",
+      "./Max Pictures/Carosal/5.webp",
+      "./Max Pictures/Carosal/6.webp"
     ],
     "sections": [
       {

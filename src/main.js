@@ -173,8 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Transparent Foreground Hero Character WebGL Liquid Engine
   const heroWrapper = document.getElementById('hero-character-wrapper');
   if (heroWrapper) {
-    const img1 = encodeURI('./Max Pictures/Max 1.png');
-    const img2 = encodeURI('./Max Pictures/Max 2.png');
+    const img1 = encodeURI('./Max Pictures/Max 1.webp');
+    const img2 = encodeURI('./Max Pictures/Max 2.webp');
 
     const heroEngine = new LiquidRevealEngine(heroWrapper, img1, img2);
     heroEngine.start();
@@ -559,10 +559,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ultra-High 4K Pixel Density Ratio (3x buffer density)
     const dpr = Math.max(window.devicePixelRatio || 1, 3);
 
-    // Format frame filename with encodeURI for Vercel / Linux path safety e.g. 0 -> "ezgif-frame-001.jpg"
+    // Format frame filename with encodeURI for Vercel / Linux path safety e.g. 0 -> "ezgif-frame-001.webp"
     const currentFrame = (index) => {
       const paddedIndex = String(index + 1).padStart(3, '0');
-      return encodeURI(`./Max Pictures/RB19/ezgif-1b4819bf5308af8e-jpg/ezgif-frame-${paddedIndex}.jpg`);
+      return encodeURI(`./Max Pictures/RB19/ezgif-1b4819bf5308af8e-jpg/ezgif-frame-${paddedIndex}.webp`);
     };
 
     // Preload 300 frames in memory with immediate render on first loaded frame

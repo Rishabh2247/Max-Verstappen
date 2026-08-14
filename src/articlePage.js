@@ -137,7 +137,7 @@ function renderArticle(year, highlightTerm = null) {
       .map(
         (imgSrc, idx) => `
       <div class="am-gallery-card">
-        <img src="${escapeHtml(imgSrc)}" alt="Max Verstappen ${data.year} ${idx + 1}" />
+        <img src="${escapeHtml(imgSrc)}" alt="Max Verstappen ${data.year} ${idx + 1}" loading="lazy" decoding="async" />
         <div class="am-gallery-caption">
           <span>MAX VERSTAPPEN • ${data.year}</span>
         </div>

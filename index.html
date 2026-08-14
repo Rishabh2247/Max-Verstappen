@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Max Verstappen</title>
-  <link rel="icon" type="image/png" href="./Max Pictures/Max Logo.png" />
-  <link rel="apple-touch-icon" href="./Max Pictures/Max Logo.png" />
+  <link rel="icon" type="image/webp" href="./Max Pictures/Max Logo.webp" />
+  <link rel="apple-touch-icon" href="./Max Pictures/Max Logo.webp" />
+  <!-- Preload Critical Hero Textures & Stylesheets -->
+  <link rel="preload" as="image" href="./Max Pictures/Max 1.webp" type="image/webp" />
+  <link rel="preload" as="image" href="./Max Pictures/Max 2.webp" type="image/webp" />
   <link rel="stylesheet" href="./src/style.css?v=3" />
   <!-- GSAP, ScrollTrigger & Lenis Fast Smooth Scroll Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -22,7 +25,7 @@
   <!-- Top-Level Fixed Pure Red Bull F1 Tyre Menu Button -->
   <button id="menu-toggle-btn" class="menu-btn pure-tyre-btn" aria-label="Toggle Red Bull F1 Menu" onclick="window.toggleMenuApp && window.toggleMenuApp(event)">
     <div class="tyre-wrapper">
-      <img src="./Max Pictures/Redbull tyre.webp" alt="Red Bull F1 Tyre" class="tyre-img" />
+      <img src="./Max Pictures/Redbull tyre.webp" alt="Red Bull F1 Tyre" class="tyre-img" width="240" height="240" fetchpriority="high" decoding="async" />
     </div>
   </button>
 
@@ -30,12 +33,12 @@
   <header class="top-nav">
     <!-- Upper Left Name Logo -->
     <div class="logo-container">
-      <img src="./Max Pictures/Name Logo.png" alt="Max Verstappen Logo" class="brand-logo" />
+      <img src="./Max Pictures/Name Logo.webp" alt="Max Verstappen Logo" class="brand-logo" width="600" height="400" fetchpriority="high" decoding="async" />
     </div>
 
     <!-- Middle Upper Max MV Logo -->
     <div class="center-logo-container">
-      <img src="./Max Pictures/Max Logo.png" alt="Max MV Logo" class="center-logo" />
+      <img src="./Max Pictures/Max Logo.webp" alt="Max MV Logo" class="center-logo" width="400" height="225" fetchpriority="high" decoding="async" />
     </div>
   </header>
 
@@ -54,7 +57,7 @@
     <div class="fs-menu-container">
       <!-- Red Bull Red Logo Background Accent -->
       <div class="fs-menu-bg-logo">
-        <img src="./Max Pictures/Redbull Logo Red.png" alt="Red Bull Red Logo Background" class="fs-bg-logo-img" />
+        <img src="./Max Pictures/Redbull Logo Red.webp" alt="Red Bull Red Logo Background" class="fs-bg-logo-img" loading="lazy" decoding="async" />
       </div>
 
       <div class="fs-menu-top">
@@ -67,28 +70,28 @@
         <!-- Left Side: 2x2 Photo Box -->
         <div class="fs-photo-grid">
           <div class="fs-photo-card" data-key="home">
-            <img src="./Max Pictures/Home.jpeg" alt="Home" class="fs-photo-img" />
+            <img src="./Max Pictures/Home.webp" alt="Home" class="fs-photo-img" width="800" height="976" loading="lazy" decoding="async" />
             <div class="fs-photo-overlay">
               <span class="fs-photo-tag">01</span>
               <span class="fs-photo-name">HOME</span>
             </div>
           </div>
           <div class="fs-photo-card" data-key="career">
-            <img src="./Max Pictures/Career.jpeg" alt="Career" class="fs-photo-img" />
+            <img src="./Max Pictures/Career.webp" alt="Career" class="fs-photo-img" width="800" height="1066" loading="lazy" decoding="async" />
             <div class="fs-photo-overlay">
               <span class="fs-photo-tag">02</span>
               <span class="fs-photo-name">CAREER</span>
             </div>
           </div>
           <div class="fs-photo-card" data-key="races">
-            <img src="./Max Pictures/Races.jpeg" alt="Races" class="fs-photo-img" />
+            <img src="./Max Pictures/Races.webp" alt="Races" class="fs-photo-img" width="800" height="1000" loading="lazy" decoding="async" />
             <div class="fs-photo-overlay">
               <span class="fs-photo-tag">03</span>
               <span class="fs-photo-name">RACES</span>
             </div>
           </div>
           <div class="fs-photo-card" data-key="offtrack">
-            <img src="./Max Pictures/Offtrack.jpeg" alt="Offtrack" class="fs-photo-img" />
+            <img src="./Max Pictures/Offtrack.webp" alt="Offtrack" class="fs-photo-img" width="800" height="1031" loading="lazy" decoding="async" />
             <div class="fs-photo-overlay">
               <span class="fs-photo-tag">04</span>
               <span class="fs-photo-name">OFFTRACK</span>
@@ -199,7 +202,7 @@
 
           <!-- World Champ Emblem Image with background removed -->
           <div class="champ-emblem-box">
-            <img src="./Max Pictures/World Champ.png" alt="World Champion" class="champ-emblem-img" />
+            <img src="./Max Pictures/World Champ.webp" alt="World Champion" class="champ-emblem-img" width="400" height="400" fetchpriority="high" decoding="async" />
           </div>
 
           <div class="card-subtext">
@@ -426,20 +429,20 @@
         <div class="p5-column p5-col-1">
         <a href="./article.html?year=2021" class="p5-card-link">
           <div class="p5-card p5-card-h-short" data-article-year="2021">
-            <img src="./Max Pictures/Wins and Trophies/Max WDC 2021.jpeg" alt="Max WDC 2021" class="p5-card-img" />
+            <img src="./Max Pictures/Wins and Trophies/Max WDC 2021.webp" alt="Max WDC 2021" class="p5-card-img" width="736" height="920" loading="lazy" decoding="async" />
             <div class="p5-card-meta">
               <span class="p5-meta-title">WDC Champion</span>
-              <span class="p5-meta-year">2021</span>
+              <span class="p5-meta-year" data-counter>2021</span>
               <span class="p5-read-badge">READ STORY ↗</span>
             </div>
           </div>
         </a>
         <a href="./article.html?year=2021&highlight=Monaco" class="p5-card-link">
           <div class="p5-card p5-card-h-tall" data-article-year="2021" data-highlight="Monaco">
-            <img src="./Max Pictures/Wins and Trophies/Max Imola GP 2021.jpeg" alt="Max Imola GP 2021" class="p5-card-img" />
+            <img src="./Max Pictures/Wins and Trophies/Max Imola GP 2021.webp" alt="Max Imola GP 2021" class="p5-card-img" width="736" height="1008" loading="lazy" decoding="async" />
             <div class="p5-card-meta">
               <span class="p5-meta-title">Imola GP</span>
-              <span class="p5-meta-year">2021</span>
+              <span class="p5-meta-year" data-counter>2021</span>
               <span class="p5-read-badge">READ STORY ↗</span>
             </div>
           </div>
@@ -450,20 +453,20 @@
       <div class="p5-column p5-col-2">
         <a href="./article.html?year=2022" class="p5-card-link">
           <div class="p5-card p5-card-h-tall" data-article-year="2022">
-            <img src="./Max Pictures/Wins and Trophies/Max WDC 2022.jpeg" alt="Max WDC 2022" class="p5-card-img" />
+            <img src="./Max Pictures/Wins and Trophies/Max WDC 2022.webp" alt="Max WDC 2022" class="p5-card-img" width="736" height="1165" loading="lazy" decoding="async" />
             <div class="p5-card-meta">
               <span class="p5-meta-title">WDC Champion</span>
-              <span class="p5-meta-year">2022</span>
+              <span class="p5-meta-year" data-counter>2022</span>
               <span class="p5-read-badge">READ STORY ↗</span>
             </div>
           </div>
         </a>
         <a href="./article.html?year=2023&highlight=Qatar" class="p5-card-link">
           <div class="p5-card p5-card-h-medium" data-article-year="2023" data-highlight="Qatar">
-            <img src="./Max Pictures/Wins and Trophies/Max Qatar GP 2023.jpeg" alt="Max Qatar GP 2023" class="p5-card-img" />
+            <img src="./Max Pictures/Wins and Trophies/Max Qatar GP 2023.webp" alt="Max Qatar GP 2023" class="p5-card-img" width="736" height="918" loading="lazy" decoding="async" />
             <div class="p5-card-meta">
               <span class="p5-meta-title">Qatar GP</span>
-              <span class="p5-meta-year">2023</span>
+              <span class="p5-meta-year" data-counter>2023</span>
               <span class="p5-read-badge">READ STORY ↗</span>
             </div>
           </div>
@@ -474,20 +477,20 @@
       <div class="p5-column p5-col-3">
         <a href="./article.html?year=2023" class="p5-card-link">
           <div class="p5-card p5-card-h-short" data-article-year="2023">
-            <img src="./Max Pictures/Wins and Trophies/Max WDC 2023.jpeg" alt="Max WDC 2023" class="p5-card-img" />
+            <img src="./Max Pictures/Wins and Trophies/Max WDC 2023.webp" alt="Max WDC 2023" class="p5-card-img" width="736" height="981" loading="lazy" decoding="async" />
             <div class="p5-card-meta">
               <span class="p5-meta-title">WDC Champion</span>
-              <span class="p5-meta-year">2023</span>
+              <span class="p5-meta-year" data-counter>2023</span>
               <span class="p5-read-badge">READ STORY ↗</span>
             </div>
           </div>
         </a>
         <a href="./article.html?year=2024" class="p5-card-link">
           <div class="p5-card p5-card-h-tall" data-article-year="2024">
-            <img src="./Max Pictures/Wins and Trophies/Max WDC 2024.jpeg" alt="Max WDC 2024" class="p5-card-img" />
+            <img src="./Max Pictures/Wins and Trophies/Max WDC 2024.webp" alt="Max WDC 2024" class="p5-card-img" width="736" height="859" loading="lazy" decoding="async" />
             <div class="p5-card-meta">
               <span class="p5-meta-title">WDC Champion</span>
-              <span class="p5-meta-year">2024</span>
+              <span class="p5-meta-year" data-counter>2024</span>
               <span class="p5-read-badge">READ STORY ↗</span>
             </div>
           </div>
@@ -544,17 +547,17 @@
       <div class="p7-right-col">
         <!-- Main Large Portrait Card -->
         <div class="p7-main-image-card">
-          <img src="./Max Pictures/Max Shop.avif" alt="Max Verstappen Shop" class="p7-main-img" />
+          <img src="./Max Pictures/Max Shop.avif" alt="Max Verstappen Shop" class="p7-main-img" width="800" height="1080" loading="lazy" decoding="async" />
         </div>
 
         <!-- Overlapping Top-Right Secondary Card -->
         <div class="p7-float-card-right">
-          <img src="./Max Pictures/Max shop 2.avif" alt="Verstappen Champion Collection" class="p7-secondary-img" />
+          <img src="./Max Pictures/Max shop 2.avif" alt="Verstappen Champion Collection" class="p7-secondary-img" width="800" height="700" loading="lazy" decoding="async" />
         </div>
 
         <!-- Overlapping Bottom Accent Photo Card (Max shop 3) -->
         <div class="p7-mv1-badge">
-          <img src="./Max Pictures/Max shop 3.webp" alt="Verstappen Shop 3" class="p7-badge-img" />
+          <img src="./Max Pictures/Max shop 3.webp" alt="Verstappen Shop 3" class="p7-badge-img" width="800" height="1080" loading="lazy" decoding="async" />
         </div>
       </div>
 
@@ -573,25 +576,27 @@
       <!-- Interactive Fan Cards Layout -->
       <div class="p8-fan-wrapper" id="p8-fan-wrapper">
         <div class="p8-fan-card" data-index="0">
-          <img src="./Max Pictures/Carosal/1.jpeg" alt="Max Verstappen Social 1" class="p8-card-img" />
+          <img src="./Max Pictures/Carosal/1.webp" alt="Max Verstappen Social 1" class="p8-card-img" width="736" height="1104" loading="lazy" decoding="async" />
         </div>
         <div class="p8-fan-card" data-index="1">
-          <img src="./Max Pictures/Carosal/2.jpeg" alt="Max Verstappen Social 2" class="p8-card-img" />
+          <img src="./Max Pictures/Carosal/2.webp" alt="Max Verstappen Social 2" class="p8-card-img" width="736" height="871" loading="lazy" decoding="async" />
         </div>
         <div class="p8-fan-card" data-index="2">
-          <img src="./Max Pictures/Carosal/3.jpeg" alt="Max Verstappen Social 3" class="p8-card-img" />
+          <img src="./Max Pictures/Carosal/3.webp" alt="Max Verstappen Social 3" class="p8-card-img" width="735" height="1030" loading="lazy" decoding="async" />
         </div>
         <div class="p8-fan-card" data-index="3">
-          <img src="./Max Pictures/Carosal/4.jpeg" alt="Max Verstappen Social 4" class="p8-card-img" />
+          <img src="./Max Pictures/Carosal/4.webp" alt="Max Verstappen Social 4" class="p8-card-img" width="736" height="1104" loading="lazy" decoding="async" />
         </div>
         <div class="p8-fan-card" data-index="4">
-          <img src="./Max Pictures/Carosal/5.jpeg" alt="Max Verstappen Social 5" class="p8-card-img" />
+          <img src="./Max Pictures/Carosal/5.webp" alt="Max Verstappen Social 5" class="p8-card-img" width="736" height="906" loading="lazy" decoding="async" />
         </div>
         <div class="p8-fan-card" data-index="5">
-          <img src="./Max Pictures/Carosal/6.jpeg" alt="Max Verstappen Social 6" class="p8-card-img" />
+          <img src="./Max Pictures/Carosal/6.webp" alt="Max Verstappen Social 6" class="p8-card-img" width="640" height="863" loading="lazy" decoding="async" />
         </div>
         <div class="p8-fan-card" data-index="6">
-          <img src="./Max Pictures/Carosal/7.jpeg" alt="Max Verstappen Social 7" class="p8-card-img" />
+          <img src="./Max Pictures/Carosal/7.webp" alt="Max Verstappen Social 7" class="p8-card-img" width="675" height="1200" loading="lazy" decoding="async" />
+        </div>
+      </div>" alt="Max Verstappen Social 7" class="p8-card-img" />
         </div>
       </div>
 
@@ -645,7 +650,7 @@
 
       <!-- Center Column: Max 2.png Portrait cutout -->
       <div class="footer-col-center">
-        <img src="./Max Pictures/Max 2.png" alt="Max Verstappen" class="footer-max-portrait" />
+        <img src="./Max Pictures/Max 2.webp" alt="Max Verstappen" class="footer-max-portrait" width="1536" height="1024" loading="lazy" decoding="async" />
       </div>
 
       <!-- Right Column: Follow On -->
