@@ -19,6 +19,15 @@
   --am-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+[data-counter],
+.am-stat-val,
+.am-stat-item-val,
+.am-hero-watermark,
+.am-year-pill {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

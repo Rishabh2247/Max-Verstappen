@@ -1,10 +1,14 @@
 import { ARTICLES_DATA } from './articlesData.js';
 import { initPageTransition, navigateWithBlockTransition } from './pageTransition.js';
+import { initNumberCounters, refreshNumberCounters } from './numberCounter.js';
 
 const YEARS_ORDER = ['2021', '2022', '2023', '2024'];
 let activeYear = '2021';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Scroll-Activated Number Counter Engine
+  initNumberCounters();
+
   // Initialize Staggered 5-Block Page Transition Overlay
   initPageTransition();
 
@@ -201,6 +205,9 @@ function renderArticle(year, highlightTerm = null) {
 
   if (prevLbl) prevLbl.textContent = `${prevYear} SEASON`;
   if (nextLbl) nextLbl.textContent = `${nextYear} SEASON`;
+
+  // Refresh number counter animation for telemetry & stats on the page
+  refreshNumberCounters();
 
   // Initialize smooth scroll reveal for sections
   initSectionObserver();

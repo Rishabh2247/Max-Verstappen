@@ -2,8 +2,12 @@ import { TopographicEngine } from './contourEngine.js';
 import { LiquidRevealEngine } from './liquidShader.js';
 import { initArticleModal } from './articleModal.js';
 import { initPageTransition, navigateWithBlockTransition } from './pageTransition.js';
+import { initNumberCounters, refreshNumberCounters } from './numberCounter.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Scroll-Activated Number Counter Engine
+  initNumberCounters();
+
   // Initialize Staggered 5-Block Page Transition Overlay
   initPageTransition();
 
@@ -1209,6 +1213,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (stat2Val) stat2Val.textContent = race.resultPts;
         if (stat2Lbl) stat2Lbl.textContent = 'POINTS EARNED';
       }
+
+      // Re-trigger counter animations for newly updated telemetry numbers
+      refreshNumberCounters();
     }
 
     // Attach Prev / Next Race Navigation Buttons

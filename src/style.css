@@ -15,6 +15,23 @@ html, body {
   background-color: #061325;
 }
 
+/* Tabular Numbers for Scroll-Activated Counter Animation */
+[data-counter],
+.p3-mstat-val,
+.p3-points-num,
+.p3-met-val,
+.p3-s-wins,
+.p3-s-year,
+.p3-ttel-val,
+.p5-meta-year,
+.am-stat-val,
+.am-stat-item-val,
+.fs-num,
+.fs-photo-tag {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
 /* Lenis Fast Smooth Scroll Utility Classes */
 html.lenis, html.lenis body {
   height: auto;
